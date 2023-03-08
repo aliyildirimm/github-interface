@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { Octokit } from "octokit";
+import Repositories from './Repositories';
+import SearchBar from './SearchBar';
 import { fetchRepositories } from './service/fetch';
 
 const App = () => {
   const [repositories, setRepositories] = useState<any>([]);
+  const [filteredRepositories, setFilteredRepositories] = useState<any>([]);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   useEffect(() => {
-    const fetchRepositoriessss = async() => {
-      const data = await fetchRepositories() as any []
+    const fetchAllRepos = async() => {
+      const data = await fetchRepositories()
       setRepositories(data)
+      setFilteredRepositories(data)
     }
-    fetchRepositoriessss()
+    fetchAllRepos()
     }, []);
 
+  const handleUserInputChange = (event: any) => {
+    const input = event.target.value;
+    setSearchTerm(input.toLowerCase())
+    const filteredRepos = repositories.filter((repo: any) => repo.name.toLowerCase().includes(input))
+    setFilteredRepositories(filteredRepos)
+  }
+
   return (
-    <div className="App">
-      {repositories.map((repo: { id: React.Key | null | undefined; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; description: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined; }) => (
-        <div key={repo.id}>
-          <h1>{repo.name}</h1>
-          <p>{repo.description}</p>
-        </div>
-      ))}
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <SearchBar searchTerm={searchTerm} handleInputChange={handleUserInputChange}/>
+      <Repositories repos={filteredRepositories}/>
     </div>
   );
 }
