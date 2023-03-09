@@ -1,4 +1,3 @@
-import { TabPanel } from '@mui/lab';
 import { Tab, Tabs } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import './App.css';
