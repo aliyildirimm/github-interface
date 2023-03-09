@@ -56,10 +56,13 @@ const App = () => {
           <Tab label="Repositories" value={1} />
         </Tabs>
         {tabValue === 0 && <span style={{ margin: 'auto', textAlign: 'center' }}>Not Exist Yet</span>}
-        <div hidden={tabValue!==1} >
-          <SearchBar searchTerm={searchTerm} handleInputChange={handleUserInputChange}/>
-          <Repositories repositories={filteredRepositories}/>
-        </div>
+        {
+          tabValue === 1 && 
+            <div>
+              <SearchBar searchTerm={searchTerm} handleInputChange={handleUserInputChange}/>
+              <Repositories repositories={filteredRepositories}/>
+            </div>
+        }
       </div>
     </div>
   );
