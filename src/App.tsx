@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import Repositories from './Repositories';
-import SearchBar from './SearchBar';
+import Repositories from './Components/Repositories';
+import SearchBar from './Components/SearchBar';
 import { fetchRepositories } from './service/fetch';
 import { GithubRepos } from './types/GithubRepos';
 import { SearchBarEvent } from './types/SearchBarEvent';
