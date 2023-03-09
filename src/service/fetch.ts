@@ -3,12 +3,9 @@ import { Octokit } from "octokit";
 import { GithubRepos } from "../types/GithubRepos";
 import { User } from "../types/User";
 
-export const fetchRepositories = async (): Promise<GithubRepos[]> => {
+export const fetchRepositories = async (repoOwner: string): Promise<GithubRepos[]> => {
     const octokit = new Octokit({ });
     
-    const repoOwner = "aliyildirimm";
-    // const repoName = "github-repo-list";
-
     const res: OctokitResponse<any[], number> = await octokit.request(`GET /users/${repoOwner}/repos`);
     const repositories = res.data.map((repo: any) => {
         return {
@@ -25,10 +22,8 @@ export const fetchRepositories = async (): Promise<GithubRepos[]> => {
     return repositories;
 }
 
-export const fetchRepoOwner = async (): Promise<User> => {
+export const fetchRepoOwner = async (repoOwner: string): Promise<User> => {
     const octokit = new Octokit({ });
-    
-    const repoOwner = "aliyildirimm";
 
     const res: OctokitResponse<any, number> = await octokit.request(`GET /users/${repoOwner}`);
     const user = {
