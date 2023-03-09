@@ -13,7 +13,7 @@ export const Login = ( {username, handleInputChange}: LoginProps ) => {
 
     return (
         <Box sx={{ display: 'flex', width: '50%', marginLeft: 'auto', marginRight: 'auto', marginTop: 32 }}>
-            <TextField label="Please write your GitHub username" variant="outlined" value={username} onChange={handleInputChange} style={{ flexGrow: 1, }} />
+            <TextField label="Please write your GitHub username" variant="outlined" value={username} onChange={handleInputChange} style={{ flexGrow: 1 }} />
             <Button variant="contained" style={{ marginLeft: 2 }} onClick={() => navigate('/home')}>Login</Button> 
         </Box>
     )
