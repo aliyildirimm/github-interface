@@ -13,7 +13,7 @@ const Repositories = ({ repositories }: RepositoriesProps) => {
     <List sx={{ width: '50%', flexGrow: 1, margin: 'auto' }} key={'repos'}>
       {repositories.map((repo: GithubRepos) => (
         <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', aligItems: 'center', minHeight: '60px' }} >
-          <ListItem key={repo.id} alignItems="flex-start" >
+          <ListItem key={repo.id} alignItems="flex-start" disableGutters >
               <ListItemText primary={repo.name} secondary={
                 <React.Fragment>
                     { 
