@@ -9,7 +9,7 @@ type SearchBarProps = {
 
 const SearchBar = ({ searchTerm, handleInputChange }: SearchBarProps) => {
     return (
-        <Box sx={{ display: 'flex', width: '50%', marginLeft: 'auto', marginRight: 'auto' }}>
+        <Box sx={{ display: 'flex', width: '100%', marginLeft: 'auto', marginRight: 'auto' }}>
             <TextField label="Search for a repository" variant="outlined" value={searchTerm} onChange={handleInputChange} style={{ flexGrow: 1, }} />
         </Box>
     );

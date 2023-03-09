@@ -10,7 +10,7 @@ type RepositoriesProps = {
 const Repositories = ({ repositories }: RepositoriesProps) => {
 
   return (
-    <List sx={{ width: '50%', flexGrow: 1, margin: 'auto' }} key={'repos'}>
+    <List sx={{ width: '100%', flexGrow: 1, margin: 'auto' }} key={'repos'}>
       {repositories.map((repo: GithubRepos) => (
         <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', aligItems: 'center' }} >
           <ListItem key={repo.id} alignItems="flex-start" disableGutters >

@@ -1,6 +1,7 @@
 import { OctokitResponse } from "@octokit/types";
 import { Octokit } from "octokit";
 import { GithubRepos } from "../types/GithubRepos";
+import { User } from "../types/User";
 
 export const fetchRepositories = async (): Promise<GithubRepos[]> => {
     const octokit = new Octokit({ });
@@ -9,7 +10,6 @@ export const fetchRepositories = async (): Promise<GithubRepos[]> => {
     // const repoName = "github-repo-list";
 
     const res: OctokitResponse<any[], number> = await octokit.request(`GET /users/${repoOwner}/repos`);
-    console.log(res.data);
     const repositories = res.data.map((repo: any) => {
         return {
             id: repo.id,
@@ -25,13 +25,17 @@ export const fetchRepositories = async (): Promise<GithubRepos[]> => {
     return repositories;
 }
 
-// export const fetchActivities = async () => {
-//     const octokit = new Octokit({ });
+export const fetchRepoOwner = async (): Promise<User> => {
+    const octokit = new Octokit({ });
+    
+    const repoOwner = "aliyildirimm";
 
-//     const repoOwner = "alperbingol";
-//     const repoName = "github-repo-list";
-
-//     const res: OctokitResponse<any[], number> = await octokit.request(`GET /repos/${repoOwner}/Data-Structures/commits`);
-//     console.log(res.data);
-
-// }
+    const res: OctokitResponse<any, number> = await octokit.request(`GET /users/${repoOwner}`);
+    const user = {
+        name: res.data.name,
+        username: res.data.login,
+        bio: res.data.bio,
+        avatar_url: res.data.avatar_url
+    }
+    return user;
+}
