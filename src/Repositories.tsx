@@ -14,7 +14,14 @@ const Repositories = ({ repositories }: RepositoriesProps) => {
       {repositories.map((repo: GithubRepos) => (
         <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', aligItems: 'center', minHeight: '60px' }} >
           <ListItem key={repo.id} alignItems="flex-start" disableGutters >
-              <ListItemText primary={repo.name} secondary={
+              <ListItemText primary={
+                <React.Fragment>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <h3 style={{ marginRight: '6px' }}>{ repo.name }</h3>
+                    <h1 style={{ font: 'status-bar', border: 0 }}>{ repo.visibility.charAt(0).toUpperCase() + repo.visibility.slice(1) }</h1>
+                  </div>
+                </React.Fragment>
+              } secondary={
                 <React.Fragment>
                     { 
                       repo.language ?

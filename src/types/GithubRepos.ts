@@ -5,4 +5,5 @@ export type GithubRepos = {
     description: string;
     updated_at: string;
     language: string;
+    visibility: string;
 };

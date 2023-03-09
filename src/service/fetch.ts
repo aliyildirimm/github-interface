@@ -17,7 +17,8 @@ export const fetchRepositories = async (): Promise<GithubRepos[]> => {
             name: repo.name,
             description: repo.description,
             updated_at: repo.updated_at,
-            language: repo.language
+            language: repo.language,
+            visibility: repo.visibility,
         };
     });
 
