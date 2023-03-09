@@ -1,15 +1,17 @@
+import { Box } from "@mui/material";
 import React from "react";
+import { SearchBarEvent } from "./types/SearchBarEvent";
 
 type SearchBarProps = {
     searchTerm: string;
-    handleInputChange: (event: any) => void;
+    handleInputChange: (event: SearchBarEvent) => void;
 }
 
 const SearchBar = (props: SearchBarProps) => {
     return (
-        <div style={{ display: 'flex', height: '10%', justifyContent: 'center' }}>
+        <Box sx={{ display: 'flex', height: '40px', width: '50%', justifyContent: 'center', margin: 'auto' }}>
             <input type="text" placeholder="Search for a repository" value={props.searchTerm} onChange={props.handleInputChange} style={{ flexGrow: 1 }}/>
-        </div>
+        </Box>
     );
 }
 

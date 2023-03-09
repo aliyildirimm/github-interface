@@ -1,22 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { fetchRepositories } from './service/fetch';
+import { Divider, List, ListItem, ListItemText } from "@mui/material";
+import { Box } from "@mui/system";
+import React from "react";
+import { GithubRepos } from "./types/GithubRepos";
 
 type RepositoriesProps = {
-  repos: any
+  repositories: GithubRepos[];
 }
 
-const Repositories = (props: RepositoriesProps ) => {
-  const repositories = props.repos
+const Repositories = ({ repositories }: RepositoriesProps) => {
 
   return (
-    <div className="App" style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '100%', alignItems: 'left', }}>
-      {repositories.map((repo: any) => (
-        <div key={repo.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'left', justifyContent: 'space-between'}}>
-          <h1>{repo.name}</h1>
-          <h1>{repo.description}</h1>
-        </div>
-      ))}
-    </div>
+    <List sx={{ width: '50%', flexGrow: 1, margin: 'auto' }} key={'repos'}>
+      {repositories.map((repo: GithubRepos) => (
+        <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', aligItems: 'center', minHeight: '60px' }} >
+          <ListItem key={repo.id} alignItems="flex-start" >
+              <ListItemText primary={repo.name} secondary={
+                <React.Fragment>
+                    { 
+                      repo.language ?
+                        <div>
+                          <span style={{ marginRight: '16px' }}>{ repo.language }</span>
+                          <span>{ repo.updated_at }</span>
+                        </div>
+                        :
+                        <div >
+                          <span>{ repo.updated_at }</span>
+                        </div>
+                    }
+                </React.Fragment>
+                } 
+              />
+          </ListItem>
+          <Divider  />
+        </Box>
+        ))}
+    </List>
   );
 }
 
