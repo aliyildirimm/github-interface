@@ -6,9 +6,6 @@ This is a interview task that creates a primitive GitHub Repositories page. Main
 2. Install the dependencies: npm install
 3. Start the application: npm start.
 
-# To run the test suites please follow the steps:
-1. 
-
 # Future improvements
 1. Currently project does not hold logged user in a local storage. It is just kept as state such that if you refresh it requests info from GitHub restApi with empty string :)
 2. Other tabs in the GitHub page such as overview or stars should be added.
