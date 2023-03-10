@@ -1,9 +1,10 @@
 # Github Repositories Search Bar
 This is a interview task that creates a primitive GitHub Repositories page. Main purpose is to both display repositories and create responsive search bar with it. This project uses official GitHub API to fetch user related ONLY PUBLIC data. For some of the components, MUI V5 has been used for designing the web application.
 
-# To try the project on browser, please click on the link https://dulcet-taffy-509ea5.netlify.app/:
-1. Please enter your GitHub username in the loading page
-2. Then you can search repositories!
+# To try the project on browser, please follow the steps:
+1. Click on the link: https://dulcet-taffy-509ea5.netlify.app/:
+2. Please enter your GitHub username in the loading page
+3. Then you can search repositories!
 
 # To try this project on your local please follow the steps:
 1. Clone the project: git clone https://github.com/aliyildirimm/github-interface.git
