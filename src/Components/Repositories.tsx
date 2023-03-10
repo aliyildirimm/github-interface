@@ -1,4 +1,4 @@
-import { Divider, List, ListItem, ListItemText } from "@mui/material";
+import { Divider, List, ListItem, ListItemText, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { GithubRepos } from "../types/GithubRepos";
@@ -10,29 +10,29 @@ type RepositoriesProps = {
 const Repositories = ({ repositories }: RepositoriesProps) => {
 
   return (
-    <List sx={{ width: '100%', flexGrow: 1, margin: 'auto' }} key={'repos'}>
+    <List sx={{ width: '100%', flexGrow: 1, margin: 'auto' }} >
       {repositories.map((repo: GithubRepos) => (
-        <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', aligItems: 'center' }} >
+        <Box key={repo.id} sx={{ display: 'flex', flexDirection: 'column', width: '100%', aligItems: 'center' }} >
           <ListItem key={repo.id} alignItems="flex-start" disableGutters >
               <ListItemText primary={
                 <React.Fragment>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <Typography component={'span'} style={{ display: 'flex', alignItems: 'center' }}>
                     <h3 style={{ marginRight: '6px' }}>{ repo.name }</h3>
                     <h4 style={{ font: 'status-bar', border: 0 }}>{ repo.visibility.charAt(0).toUpperCase() + repo.visibility.slice(1) }</h4>
-                  </div>
+                  </Typography>
                 </React.Fragment>
               } secondary={
                 <React.Fragment>
                     { 
                       repo.language ?
-                        <div>
+                        <Typography component={'span'}>
                           <span style={{ marginRight: '16px' }}>{ repo.language }</span>
                           <span> { `Updated on ${new Date(repo.updated_at).toDateString()}` }</span>
-                        </div>
+                        </Typography>
                         :
-                        <div >
+                        <Typography component={'span'}>
                           <span>{ `Updated on ${new Date(repo.updated_at).toDateString()}` }</span>
-                        </div>
+                        </Typography>
                     }
                 </React.Fragment>
                 } 
