@@ -22,7 +22,7 @@ const Home = ( { username }: HomeProps ) => {
   return (
     <div style = {{ display: 'flex', flexDirection: 'row', padding: 10, marginLeft: '48px', marginRight: '48px' }}>
         <div style={{ display: 'flex', flexDirection: 'column', padding: 10, width: '25%', alignItems: 'center' }}>
-        <Sidebar repoOwner={repoOwner}/>
+          <Sidebar repoOwner={repoOwner}/>
         </div>
         <MainComponent repoOwner={username}/>
   </div>
